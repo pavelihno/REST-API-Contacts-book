@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block head %}
+{{ super.head }}
+{% endblock %}
+
+{% block content %}
+
+<div class="d-flex flex-column justify-content-center row gy-5" style="margin: 0.1% 0% 0 2%;">
+    <h1>Контакт</h1>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{ contact.name }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ contact.email }}</h6>
+            {% for phone_number in contact.phone_numbers.all %}
+                <p class="card-text font-weight-bold"><b>{{ phone_number.title }}:</b> {{ phone_number.phone_number }}</p>
+            {% endfor %}
+            <a href="{% url 'contact_detail' pk=contact.id %}" class="card-link" target="_blank">Перейти</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
